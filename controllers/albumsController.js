@@ -56,8 +56,10 @@ function update(req, res) {
       res.json(savedAlbum);
     });
   });
-
 }
+
+
+
 
 
 // export public methods here

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="tunely">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,30 @@
         <p>Your music binder!</p>
       </div>
     </div>
+
+    <div class="container" ng-controller="AlbumsIndexController as albumsIndexCtrl">
+      <!--html inside of here can use the information from the AlbumsIndexController-->
+
+      <label>Search: <input ng-model="searchText"></label>
+      <table id="searchTextResults">
+        <tr><th>Name</th></tr>
+        <tr ng-repeat="album in albumsIndexCtrl.albums | filter:searchText">
+          <td>{{album.name}}</td>
+          <td>{{album.phone}}</td>
+        </tr>
+      </table>
+
+
+
+      <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
+      <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
+      <p><b> albumsIndexCtrl.newAlbum:</b> {{albumsIndexCtrl.newAlbum.name}} by {{albumsIndexCtrl.newAlbum.artistName}} </p>
+      <div ng-repeat="album in albumsIndexCtrl.albums | orderBy:'name'"> {{ album.name }} by {{album.artistName}} </div>
+
+
+
+    </div>
+
   </body>
 
 </html>

@@ -42,4 +42,24 @@ function AlbumsShowController ($http, $routeParams) {
       console.log('There was an error deleting the data', response);
     });
   }
+
+  vm.editSong = function (song) {
+
+    console.log(song);
+    console.log(song._id);
+    console.log(song.name);
+
+    console.log('/api/albums/' +$routeParams.id + '/songs/' + song._id);
+
+    $http({
+      method: 'PUT',
+      url: '/api/albums/' +$routeParams.id + '/songs/' + song._id,
+      data: song
+    }).then(function successCallback(json) {
+      // no data needed, angular is live updating vm
+    }, function errorCallback(response) {
+      console.log('There was an error deleting the data', response);
+    });
+  }
+
 }

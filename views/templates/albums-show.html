@@ -29,10 +29,51 @@
 
                     <li class="list-group-item">
                       <h4 class="inline-header">Songs:</h4>
-                      <div class="list-group-item" ng-repeat="song in albumsShowCtrl.album.songs">
-                        ({{song.trackNumber}}){{song.name}}
-                      </div>
+                        <div class="list-group-item" ng-repeat="song in albumsShowCtrl.album.songs">
+
+                          <button type="button" class="btn btn-info" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                          </button>
+
+                          <button type="button" class="btn btn-danger" aria-label="Left Align" ng-click="albumsShowCtrl.deleteSong(song)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </button>
+
+                          <span> ({{song.trackNumber}}) {{song.name}} </span>
+                        </div>
                     </li>
+                    <hr>
+
+                    <form class="form-horizontal" ng-submit="albumsShowCtrl.createSong()">
+                      <fieldset>
+
+                        <!-- Create New Song -->
+                        <!-- Form Name -->
+                        <legend>Add New Song</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <div class="col-md-4">
+                          <input ng-model="albumsShowCtrl.newSong.trackNumber" type="text" class="form-control input-md" placeholder="Track Number">
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <div class="col-md-4">
+                          <input ng-model="albumsShowCtrl.newSong.name" type="text" class="form-control input-md" placeholder="Track Name">
+                          </div>
+                        </div>
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-success" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-plus better-font" aria-hidden="true"> Add </span>
+                        </button>
+
+                      </fieldset>
+                    </form>
+
+
                   </ul>
                 </div>
               </div>
